@@ -1,0 +1,93 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://raw.githubusercontent.com/api-evangelist/google-cloud-vision/refs/heads/main/json-schema/json-schema.yml
+title: Google Cloud Vision Annotate Image Request
+description: A request to annotate an image using Google Cloud Vision API
+type: object
+properties:
+  image:
+    type: object
+    description: The image to be analyzed
+    properties:
+      content:
+        type: string
+        contentEncoding: base64
+        description: Base64-encoded image content
+      source:
+        type: object
+        properties:
+          imageUri:
+            type: string
+            format: uri
+            description: Public URI of the image
+          gcsImageUri:
+            type: string
+            description: Google Cloud Storage URI of the image
+        description: External image source
+    description: The image to be processed
+  features:
+    type: array
+    items:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - LABEL_DETECTION
+            - FACE_DETECTION
+            - TEXT_DETECTION
+            - DOCUMENT_TEXT_DETECTION
+            - LANDMARK_DETECTION
+            - LOGO_DETECTION
+            - SAFE_SEARCH_DETECTION
+            - IMAGE_PROPERTIES
+            - OBJECT_LOCALIZATION
+            - PRODUCT_SEARCH
+            - WEB_DETECTION
+          description: The feature type to detect
+        maxResults:
+          type: integer
+          minimum: 1
+          description: Maximum number of results for this feature
+        model:
+          type: string
+          description: Model to use for detection
+      required:
+        - type
+    minItems: 1
+    description: Requested features to detect in the image
+  imageContext:
+    type: object
+    properties:
+      languageHints:
+        type: array
+        items:
+          type: string
+        description: Language hints for text detection
+      cropHintsParams:
+        type: object
+        properties:
+          aspectRatios:
+            type: array
+            items:
+              type: number
+      latLongRect:
+        type: object
+        properties:
+          minLatLng:
+            type: object
+            properties:
+              latitude:
+                type: number
+              longitude:
+                type: number
+          maxLatLng:
+            type: object
+            properties:
+              latitude:
+                type: number
+              longitude:
+                type: number
+    description: Additional context for image analysis
+required:
+  - image
+  - features

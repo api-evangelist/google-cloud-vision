@@ -1,0 +1,48 @@
+name: Google Cloud Vision
+description: >-
+  Google Cloud Vision API enables developers to integrate image analysis features
+  including label detection, face detection, OCR text extraction, object
+  localization, and explicit content detection into applications.
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/google-cloud-vision/refs/heads/main/apis.yml
+created: '2026-03-13'
+modified: '2026-03-13'
+specificationVersion: '0.18'
+tags:
+  - Computer Vision
+  - Image Analysis
+  - OCR
+  - Google Cloud
+  - Machine Learning
+apis:
+  - name: Google Cloud Vision API
+    description: >-
+      The Google Cloud Vision API provides image analysis capabilities including
+      label detection, face detection, text extraction (OCR), object detection,
+      landmark recognition, and explicit content moderation.
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://cloud.google.com/vision/docs
+    baseURL: https://vision.googleapis.com/v1
+    tags:
+      - Image Analysis
+      - Label Detection
+      - OCR
+      - Face Detection
+    properties:
+      - type: OpenAPI
+        url: openapi/openapi.yml
+      - type: JSONSchema
+        url: json-schema/json-schema.yml
+      - type: JSONLDContext
+        url: json-ld/json-ld.yml
+common:
+  - type: GettingStarted
+    url: https://cloud.google.com/vision/docs/quickstart
+  - type: Pricing
+    url: https://cloud.google.com/vision/pricing
+  - type: JSONLDContext
+    url: json-ld/json-ld.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

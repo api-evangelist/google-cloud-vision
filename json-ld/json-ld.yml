@@ -1,0 +1,38 @@
+"@context":
+  "@vocab": https://schema.org/
+  gcp: https://cloud.google.com/vision/docs/reference/rest/v1/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcterms: http://purl.org/dc/terms/
+  AnnotateImageRequest:
+    "@id": gcp:images/annotate
+    "@type": "@id"
+  image:
+    "@id": schema:image
+    "@type": "@id"
+  features:
+    "@id": gcp:features
+    "@container": "@list"
+  featureType:
+    "@id": gcp:type
+    "@type": xsd:string
+  description:
+    "@id": schema:description
+    "@type": xsd:string
+  score:
+    "@id": gcp:score
+    "@type": xsd:float
+  confidence:
+    "@id": gcp:confidence
+    "@type": xsd:float
+  labelAnnotations:
+    "@id": gcp:labelAnnotations
+    "@container": "@list"
+  textAnnotations:
+    "@id": gcp:textAnnotations
+    "@container": "@list"
+  dateCreated:
+    "@id": dcterms:created
+    "@type": xsd:dateTime
+  dateModified:
+    "@id": dcterms:modified
+    "@type": xsd:dateTime

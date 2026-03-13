@@ -1,0 +1,279 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Vision API
+  description: >-
+    Provides image analysis capabilities including label detection, face
+    detection, text extraction (OCR), object detection, landmark recognition,
+    and explicit content moderation.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/vision/docs
+servers:
+  - url: https://vision.googleapis.com/v1
+    description: Google Cloud Vision production endpoint
+tags:
+  - name: Images
+    description: Analyze images for various features
+  - name: Files
+    description: Analyze files such as PDFs for text and features
+  - name: ProductSearch
+    description: Search for products similar to an image
+paths:
+  /images:annotate:
+    post:
+      operationId: annotateImages
+      summary: Annotate images
+      description: >-
+        Run image detection and annotation for a batch of images. Supports label
+        detection, face detection, text detection, landmark detection, and more.
+      tags:
+        - Images
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchAnnotateImagesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchAnnotateImagesResponse'
+  /images:asyncBatchAnnotate:
+    post:
+      operationId: asyncBatchAnnotateImages
+      summary: Async annotate images
+      description: >-
+        Run asynchronous image detection and annotation for a list of images.
+        Results are written to a GCS output location.
+      tags:
+        - Images
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AsyncBatchAnnotateImagesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /files:annotate:
+    post:
+      operationId: annotateFiles
+      summary: Annotate files
+      description: >-
+        Run file detection and annotation for a batch of files such as PDFs.
+      tags:
+        - Files
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchAnnotateFilesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchAnnotateFilesResponse'
+  /projects/{project}/locations/{location}/productSets:
+    get:
+      operationId: listProductSets
+      summary: List product sets
+      description: Lists product sets in the specified project and location.
+      tags:
+        - ProductSearch
+      parameters:
+        - name: project
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductSetList'
+components:
+  schemas:
+    BatchAnnotateImagesRequest:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnnotateImageRequest'
+          description: Individual image annotation requests
+    AnnotateImageRequest:
+      type: object
+      properties:
+        image:
+          type: object
+          properties:
+            content:
+              type: string
+              format: byte
+              description: Base64-encoded image content
+            source:
+              type: object
+              properties:
+                imageUri:
+                  type: string
+                  format: uri
+                  description: URI of the image
+                gcsImageUri:
+                  type: string
+                  description: GCS URI of the image
+        features:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                enum:
+                  - LABEL_DETECTION
+                  - FACE_DETECTION
+                  - TEXT_DETECTION
+                  - DOCUMENT_TEXT_DETECTION
+                  - LANDMARK_DETECTION
+                  - LOGO_DETECTION
+                  - SAFE_SEARCH_DETECTION
+                  - IMAGE_PROPERTIES
+                  - OBJECT_LOCALIZATION
+                  - PRODUCT_SEARCH
+              maxResults:
+                type: integer
+          description: Features to detect in the image
+    BatchAnnotateImagesResponse:
+      type: object
+      properties:
+        responses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnnotateImageResponse'
+    AnnotateImageResponse:
+      type: object
+      properties:
+        labelAnnotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityAnnotation'
+        textAnnotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityAnnotation'
+        faceAnnotations:
+          type: array
+          items:
+            type: object
+        landmarkAnnotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityAnnotation'
+        safeSearchAnnotation:
+          type: object
+          properties:
+            adult:
+              type: string
+            violence:
+              type: string
+            racy:
+              type: string
+    EntityAnnotation:
+      type: object
+      properties:
+        mid:
+          type: string
+          description: Knowledge Graph machine ID
+        description:
+          type: string
+          description: Entity textual description
+        score:
+          type: number
+          description: Overall score of the result
+        confidence:
+          type: number
+          description: Confidence score
+        topicality:
+          type: number
+          description: Topicality score
+        locale:
+          type: string
+          description: Language code for the locale
+    AsyncBatchAnnotateImagesRequest:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnnotateImageRequest'
+        outputConfig:
+          type: object
+          properties:
+            gcsDestination:
+              type: object
+              properties:
+                uri:
+                  type: string
+    BatchAnnotateFilesRequest:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            type: object
+    BatchAnnotateFilesResponse:
+      type: object
+      properties:
+        responses:
+          type: array
+          items:
+            type: object
+    ProductSetList:
+      type: object
+      properties:
+        productSets:
+          type: array
+          items:
+            type: object
+        nextPageToken:
+          type: string
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+        response:
+          type: object
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-vision: Manage your Google Cloud Vision resources
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud Platform resources
+security:
+  - oauth2:
+      - https://www.googleapis.com/auth/cloud-vision
