@@ -23,7 +23,7 @@ paths:
   /images:annotate:
     post:
       operationId: annotateImages
-      summary: Annotate images
+      summary: Google Cloud Vision Annotate images
       description: >-
         Run image detection and annotation for a batch of images. Supports label
         detection, face detection, text detection, landmark detection, and more.
@@ -45,7 +45,7 @@ paths:
   /images:asyncBatchAnnotate:
     post:
       operationId: asyncBatchAnnotateImages
-      summary: Async annotate images
+      summary: Google Cloud Vision Async annotate images
       description: >-
         Run asynchronous image detection and annotation for a list of images.
         Results are written to a GCS output location.
@@ -67,7 +67,7 @@ paths:
   /files:annotate:
     post:
       operationId: annotateFiles
-      summary: Annotate files
+      summary: Google Cloud Vision Annotate files
       description: >-
         Run file detection and annotation for a batch of files such as PDFs.
       tags:
@@ -88,7 +88,7 @@ paths:
   /projects/{project}/locations/{location}/productSets:
     get:
       operationId: listProductSets
-      summary: List product sets
+      summary: Google Cloud Vision List product sets
       description: Lists product sets in the specified project and location.
       tags:
         - ProductSearch
