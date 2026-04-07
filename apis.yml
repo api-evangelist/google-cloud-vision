@@ -12,10 +12,10 @@ specificationVersion: '0.19'
 type: Index
 tags:
   - Computer Vision
-  - Image Analysis
-  - OCR
   - Google Cloud
+  - Image Analysis
   - Machine Learning
+  - OCR
 apis:
   - name: Google Cloud Vision API
     description: >-
@@ -26,10 +26,10 @@ apis:
     humanURL: https://cloud.google.com/vision/docs
     baseURL: https://vision.googleapis.com/v1
     tags:
+      - Face Detection
       - Image Analysis
       - Label Detection
       - OCR
-      - Face Detection
     properties:
       - type: Documentation
         url: https://cloud.google.com/vision/docs/reference/rest
