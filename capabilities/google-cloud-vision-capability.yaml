@@ -1,0 +1,186 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Vision API
+  description: Provides image analysis capabilities including label detection, face detection, text extraction (OCR), object
+    detection, landmark recognition, and explicit content moderation.
+  tags:
+  - Google
+  - Cloud
+  - Vision
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: google-cloud-vision
+    baseUri: https://vision.googleapis.com/v1
+    description: Google Cloud Vision API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{GOOGLE_CLOUD_VISION_TOKEN}}'
+    resources:
+    - name: images-annotate
+      path: /images:annotate
+      operations:
+      - name: annotateimages
+        method: POST
+        description: Google Cloud Vision Annotate images
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: images-asyncbatchannotate
+      path: /images:asyncBatchAnnotate
+      operations:
+      - name: asyncbatchannotateimages
+        method: POST
+        description: Google Cloud Vision Async annotate images
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: files-annotate
+      path: /files:annotate
+      operations:
+      - name: annotatefiles
+        method: POST
+        description: Google Cloud Vision Annotate files
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-project-locations-location-productsets
+      path: /projects/{project}/locations/{location}/productSets
+      operations:
+      - name: listproductsets
+        method: GET
+        description: Google Cloud Vision List product sets
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: google-cloud-vision-rest
+    description: REST adapter for Google Cloud Vision API.
+    resources:
+    - path: /images:annotate
+      name: annotateimages
+      operations:
+      - method: POST
+        name: annotateimages
+        description: Google Cloud Vision Annotate images
+        call: google-cloud-vision.annotateimages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /images:asyncBatchAnnotate
+      name: asyncbatchannotateimages
+      operations:
+      - method: POST
+        name: asyncbatchannotateimages
+        description: Google Cloud Vision Async annotate images
+        call: google-cloud-vision.asyncbatchannotateimages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /files:annotate
+      name: annotatefiles
+      operations:
+      - method: POST
+        name: annotatefiles
+        description: Google Cloud Vision Annotate files
+        call: google-cloud-vision.annotatefiles
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{project}/locations/{location}/productSets
+      name: listproductsets
+      operations:
+      - method: GET
+        name: listproductsets
+        description: Google Cloud Vision List product sets
+        call: google-cloud-vision.listproductsets
+        with:
+          project: rest.project
+          location: rest.location
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: google-cloud-vision-mcp
+    transport: http
+    description: MCP adapter for Google Cloud Vision API for AI agent use.
+    tools:
+    - name: annotateimages
+      description: Google Cloud Vision Annotate images
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-vision.annotateimages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: asyncbatchannotateimages
+      description: Google Cloud Vision Async annotate images
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-vision.asyncbatchannotateimages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: annotatefiles
+      description: Google Cloud Vision Annotate files
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-vision.annotatefiles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listproductsets
+      description: Google Cloud Vision List product sets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-vision.listproductsets
+      with:
+        project: tools.project
+        location: tools.location
+      inputParameters:
+      - name: project
+        type: string
+        description: project
+        required: true
+      - name: location
+        type: string
+        description: location
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_VISION_TOKEN: GOOGLE_CLOUD_VISION_TOKEN
