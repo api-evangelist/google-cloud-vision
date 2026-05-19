@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Vision API — Images
+  description: 'Google Cloud Vision API — Images. 2 operations. Lead operation: Google Cloud Vision Annotate images. Self-contained
+    Naftiko capability covering one Google Cloud Vision business surface.'
+  tags:
+  - Google Cloud Vision
+  - Images
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_VISION_API_KEY: GOOGLE_CLOUD_VISION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openapi-images
+    baseUri: https://vision.googleapis.com/v1
+    description: Google Cloud Vision API — Images business capability. Self-contained, no shared references.
+    resources:
+    - name: images:annotate
+      path: /images:annotate
+      operations:
+      - name: annotateimages
+        method: POST
+        description: Google Cloud Vision Annotate images
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: images:asyncBatchAnnotate
+      path: /images:asyncBatchAnnotate
+      operations:
+      - name: asyncbatchannotateimages
+        method: POST
+        description: Google Cloud Vision Async annotate images
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_CLOUD_VISION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: openapi-images-rest
+    port: 8080
+    description: REST adapter for Google Cloud Vision API — Images. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/images-annotate
+      name: images-annotate
+      description: REST surface for images:annotate.
+      operations:
+      - method: POST
+        name: annotateimages
+        description: Google Cloud Vision Annotate images
+        call: openapi-images.annotateimages
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/images-asyncbatchannotate
+      name: images-asyncbatchannotate
+      description: REST surface for images:asyncBatchAnnotate.
+      operations:
+      - method: POST
+        name: asyncbatchannotateimages
+        description: Google Cloud Vision Async annotate images
+        call: openapi-images.asyncbatchannotateimages
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openapi-images-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Cloud Vision API — Images. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: google-cloud-vision-annotate-images
+      description: Google Cloud Vision Annotate images
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openapi-images.annotateimages
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-vision-async-annotate
+      description: Google Cloud Vision Async annotate images
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openapi-images.asyncbatchannotateimages
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

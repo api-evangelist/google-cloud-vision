@@ -1,0 +1,85 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Vision API — ProductSearch
+  description: 'Google Cloud Vision API — ProductSearch. 1 operations. Lead operation: Google Cloud Vision List product sets.
+    Self-contained Naftiko capability covering one Google Cloud Vision business surface.'
+  tags:
+  - Google Cloud Vision
+  - ProductSearch
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_VISION_API_KEY: GOOGLE_CLOUD_VISION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openapi-productsearch
+    baseUri: https://vision.googleapis.com/v1
+    description: Google Cloud Vision API — ProductSearch business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-project-locations-location-productSets
+      path: /projects/{project}/locations/{location}/productSets
+      operations:
+      - name: listproductsets
+        method: GET
+        description: Google Cloud Vision List product sets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: project
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_CLOUD_VISION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: openapi-productsearch-rest
+    port: 8080
+    description: REST adapter for Google Cloud Vision API — ProductSearch. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/projects/{project}/locations/{location}/productsets
+      name: projects-project-locations-location-productsets
+      description: REST surface for projects-project-locations-location-productSets.
+      operations:
+      - method: GET
+        name: listproductsets
+        description: Google Cloud Vision List product sets
+        call: openapi-productsearch.listproductsets
+        with:
+          project: rest.project
+          location: rest.location
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openapi-productsearch-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Cloud Vision API — ProductSearch. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: google-cloud-vision-list-product
+      description: Google Cloud Vision List product sets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: openapi-productsearch.listproductsets
+      with:
+        project: tools.project
+        location: tools.location
+      outputParameters:
+      - type: object
+        mapping: $.

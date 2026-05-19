@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Vision API — Files
+  description: 'Google Cloud Vision API — Files. 1 operations. Lead operation: Google Cloud Vision Annotate files. Self-contained
+    Naftiko capability covering one Google Cloud Vision business surface.'
+  tags:
+  - Google Cloud Vision
+  - Files
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_VISION_API_KEY: GOOGLE_CLOUD_VISION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: openapi-files
+    baseUri: https://vision.googleapis.com/v1
+    description: Google Cloud Vision API — Files business capability. Self-contained, no shared references.
+    resources:
+    - name: files:annotate
+      path: /files:annotate
+      operations:
+      - name: annotatefiles
+        method: POST
+        description: Google Cloud Vision Annotate files
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_CLOUD_VISION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: openapi-files-rest
+    port: 8080
+    description: REST adapter for Google Cloud Vision API — Files. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/files-annotate
+      name: files-annotate
+      description: REST surface for files:annotate.
+      operations:
+      - method: POST
+        name: annotatefiles
+        description: Google Cloud Vision Annotate files
+        call: openapi-files.annotatefiles
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: openapi-files-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Cloud Vision API — Files. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: google-cloud-vision-annotate-files
+      description: Google Cloud Vision Annotate files
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: openapi-files.annotatefiles
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
