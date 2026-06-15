@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Google Cloud Vision API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://accounts.google.com/o/oauth2/auth",
+      "accessTokenUrl": "https://oauth2.googleapis.com/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Vision Annotate images",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://vision.googleapis.com/v1/images:annotate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run image detection and annotation for a batch of images. Supports label detection, face detection, text detection, landmark detection, and more."
+        },
+        {
+          "info": {
+            "name": "Google Cloud Vision Async annotate images",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://vision.googleapis.com/v1/images:asyncBatchAnnotate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run asynchronous image detection and annotation for a list of images. Results are written to a GCS output location."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Vision Annotate files",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://vision.googleapis.com/v1/files:annotate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run file detection and annotation for a batch of files such as PDFs."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ProductSearch",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Google Cloud Vision List product sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://vision.googleapis.com/v1/projects/:project/locations/:location/productSets",
+            "params": [
+              {
+                "name": "project",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists product sets in the specified project and location."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

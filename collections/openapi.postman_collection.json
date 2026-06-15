@@ -1,0 +1,488 @@
+{
+  "item": [
+    {
+      "id": "b6d30ff0-f7d9-472a-85cc-4bb222f96585",
+      "name": "Files",
+      "description": {
+        "content": "Analyze files such as PDFs for text and features",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7d07b0a-0f6b-4b54-97a9-1c8ebce10a8d",
+          "name": "Google Cloud Vision Annotate files",
+          "request": {
+            "name": "Google Cloud Vision Annotate files",
+            "description": {
+              "content": "Run file detection and annotation for a batch of files such as PDFs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "files:annotate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5a141983-c0fb-4bf1-96d3-4d95e85a8549",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "files:annotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3f2f5f51-025b-4028-95df-324a51ffc760",
+      "name": "Images",
+      "description": {
+        "content": "Analyze images for various features",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "61abae45-4645-43d8-be40-e37b4c2b7b3e",
+          "name": "Google Cloud Vision Annotate images",
+          "request": {
+            "name": "Google Cloud Vision Annotate images",
+            "description": {
+              "content": "Run image detection and annotation for a batch of images. Supports label detection, face detection, text detection, landmark detection, and more.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "images:annotate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    {\n      \"image\": {\n        \"content\": \"<byte>\",\n        \"source\": {\n          \"imageUri\": \"<uri>\",\n          \"gcsImageUri\": \"<string>\"\n        }\n      },\n      \"features\": [\n        {\n          \"type\": \"<string>\",\n          \"maxResults\": \"<integer>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"maxResults\": \"<integer>\"\n        }\n      ]\n    },\n    {\n      \"image\": {\n        \"content\": \"<byte>\",\n        \"source\": {\n          \"imageUri\": \"<uri>\",\n          \"gcsImageUri\": \"<string>\"\n        }\n      },\n      \"features\": [\n        {\n          \"type\": \"<string>\",\n          \"maxResults\": \"<integer>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"maxResults\": \"<integer>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6c60847f-5869-4697-8027-9cc415718794",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "images:annotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"image\": {\n        \"content\": \"string\",\n        \"source\": {\n          \"imageUri\": \"http://cnVPRXTsNfWXMortNMuSs.rlcOz,KRxgVT1D,Qkba,QaZFm8t,-DzTpBGHFNJB0Oy,SFMBDhTsXvVcphIpdIP14-bMF3s0QUq11Vw\",\n          \"gcsImageUri\": \"string\"\n        }\n      },\n      \"features\": [\n        {\n          \"type\": \"LOGO_DETECTION\",\n          \"maxResults\": 9741\n        },\n        {\n          \"type\": \"SAFE_SEARCH_DETECTION\",\n          \"maxResults\": 5834\n        }\n      ]\n    },\n    {\n      \"image\": {\n        \"content\": \"string\",\n        \"source\": {\n          \"imageUri\": \"http://yLCpjlnQqptzQHxqIfPJlrpLdGTD.znxowB\",\n          \"gcsImageUri\": \"string\"\n        }\n      },\n      \"features\": [\n        {\n          \"type\": \"IMAGE_PROPERTIES\",\n          \"maxResults\": 2859\n        },\n        {\n          \"type\": \"DOCUMENT_TEXT_DETECTION\",\n          \"maxResults\": 4303\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"responses\": [\n    {\n      \"labelAnnotations\": [\n        {\n          \"mid\": \"string\",\n          \"description\": \"string\",\n          \"score\": 5033.091235605666,\n          \"confidence\": 6768.354697225757,\n          \"topicality\": 4346.375085285535,\n          \"locale\": \"string\"\n        },\n        {\n          \"mid\": \"string\",\n          \"description\": \"string\",\n          \"score\": 9575.647462091873,\n          \"confidence\": 7086.780398835787,\n          \"topicality\": 965.9728382210142,\n          \"locale\": \"string\"\n        }\n      ],\n      \"textAnnotations\": [\n        {\n          \"mid\": \"string\",\n          \"description\": \"string\",\n          \"score\": 4705.246781999222,\n          \"confidence\": 8254.42210755882,\n          \"topicality\": 1202.2340934601716,\n          \"locale\": \"string\"\n        },\n        {\n          \"mid\": \"string\",\n          \"description\": \"string\",\n          \"score\": 1483.2322154656351,\n          \"confidence\": 9445.903529059047,\n          \"topicality\": 1402.2122768083157,\n          \"locale\": \"string\"\n        }\n      ],\n      \"landmarkAnnotations\": [\n        {\n          \"mid\": \"string\",\n          \"description\": \"string\",\n          \"score\": 5994.408640059382,\n          \"confidence\": 8375.95045659715,\n          \"topicality\": 5382.656555069324,\n          \"locale\": \"string\"\n        },\n        {\n          \"mid\": \"string\",\n          \"description\": \"string\",\n          \"score\": 7198.256002264423,\n          \"confidence\": 5788.5100176990545,\n          \"topicality\": 3109.6726191188486,\n          \"locale\": \"string\"\n        }\n      ],\n      \"safeSearchAnnotation\": {\n        \"adult\": \"string\",\n        \"violence\": \"string\",\n        \"racy\": \"string\"\n      }\n    },\n    {\n      \"labelAnnotations\": [\n        {\n          \"mid\": \"string\",\n          \"description\": \"string\",\n          \"score\": 9262.737156013443,\n          \"confidence\": 4231.0343452677,\n          \"topicality\": 1620.5332165078,\n          \"locale\": \"string\"\n        },\n        {\n          \"mid\": \"string\",\n          \"description\": \"string\",\n          \"score\": 3885.4825506767497,\n          \"confidence\": 1570.8425586483254,\n          \"topicality\": 3843.322781778236,\n          \"locale\": \"string\"\n        }\n      ],\n      \"textAnnotations\": [\n        {\n          \"mid\": \"string\",\n          \"description\": \"string\",\n          \"score\": 2771.3590290911907,\n          \"confidence\": 4321.834073168475,\n          \"topicality\": 5230.142983321463,\n          \"locale\": \"string\"\n        },\n        {\n          \"mid\": \"string\",\n          \"description\": \"string\",\n          \"score\": 340.04620811873053,\n          \"confidence\": 2721.4600490273856,\n          \"topicality\": 8162.131972687976,\n          \"locale\": \"string\"\n        }\n      ],\n      \"landmarkAnnotations\": [\n        {\n          \"mid\": \"string\",\n          \"description\": \"string\",\n          \"score\": 4145.569349739518,\n          \"confidence\": 5989.589228444695,\n          \"topicality\": 6137.4528921158035,\n          \"locale\": \"string\"\n        },\n        {\n          \"mid\": \"string\",\n          \"description\": \"string\",\n          \"score\": 3841.3137372693727,\n          \"confidence\": 9143.190688391305,\n          \"topicality\": 5763.590258718976,\n          \"locale\": \"string\"\n        }\n      ],\n      \"safeSearchAnnotation\": {\n        \"adult\": \"string\",\n        \"violence\": \"string\",\n        \"racy\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0cc5aee-98ba-48e3-a385-7613aebf1329",
+          "name": "Google Cloud Vision Async annotate images",
+          "request": {
+            "name": "Google Cloud Vision Async annotate images",
+            "description": {
+              "content": "Run asynchronous image detection and annotation for a list of images. Results are written to a GCS output location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "images:asyncBatchAnnotate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requests\": [\n    {\n      \"image\": {\n        \"content\": \"<byte>\",\n        \"source\": {\n          \"imageUri\": \"<uri>\",\n          \"gcsImageUri\": \"<string>\"\n        }\n      },\n      \"features\": [\n        {\n          \"type\": \"<string>\",\n          \"maxResults\": \"<integer>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"maxResults\": \"<integer>\"\n        }\n      ]\n    },\n    {\n      \"image\": {\n        \"content\": \"<byte>\",\n        \"source\": {\n          \"imageUri\": \"<uri>\",\n          \"gcsImageUri\": \"<string>\"\n        }\n      },\n      \"features\": [\n        {\n          \"type\": \"<string>\",\n          \"maxResults\": \"<integer>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"maxResults\": \"<integer>\"\n        }\n      ]\n    }\n  ],\n  \"outputConfig\": {\n    \"gcsDestination\": {\n      \"uri\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7b0b22fb-7c6b-427f-9fc9-00f5a4ccb310",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "images:asyncBatchAnnotate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requests\": [\n    {\n      \"image\": {\n        \"content\": \"string\",\n        \"source\": {\n          \"imageUri\": \"https://QDFtHurQXlLWWkKJtJrqAckUVN.iceqO\",\n          \"gcsImageUri\": \"string\"\n        }\n      },\n      \"features\": [\n        {\n          \"type\": \"LOGO_DETECTION\",\n          \"maxResults\": 3567\n        },\n        {\n          \"type\": \"IMAGE_PROPERTIES\",\n          \"maxResults\": 4341\n        }\n      ]\n    },\n    {\n      \"image\": {\n        \"content\": \"string\",\n        \"source\": {\n          \"imageUri\": \"http://eXPUoxKrInYfClCTdF.ssUiPciph-Li-j72p53xwU,zJ2vC.EDfvM6CIXBBXC6pq\",\n          \"gcsImageUri\": \"string\"\n        }\n      },\n      \"features\": [\n        {\n          \"type\": \"LOGO_DETECTION\",\n          \"maxResults\": 719\n        },\n        {\n          \"type\": \"SAFE_SEARCH_DETECTION\",\n          \"maxResults\": 1280\n        }\n      ]\n    }\n  ],\n  \"outputConfig\": {\n    \"gcsDestination\": {\n      \"uri\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"done\": false,\n  \"response\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a0d1d47b-78ad-470b-a17e-abd1a2a5478a",
+      "name": "ProductSearch",
+      "description": {
+        "content": "Search for products similar to an image",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3c8260db-380f-4afb-b7eb-124c1aefb631",
+          "name": "Google Cloud Vision List product sets",
+          "request": {
+            "name": "Google Cloud Vision List product sets",
+            "description": {
+              "content": "Lists product sets in the specified project and location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":project",
+                "locations",
+                ":location",
+                "productSets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bbab167b-2d0c-4a2b-8ff7-0bd38ca68cb0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":project",
+                    "locations",
+                    ":location",
+                    "productSets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"nextPageToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://vision.googleapis.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/cloud-vision https://www.googleapis.com/auth/cloud-platform"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "47b86f9b-af0c-4563-b955-96e46ca6bd25",
+    "name": "Google Cloud Vision API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Provides image analysis capabilities including label detection, face detection, text extraction (OCR), object detection, landmark recognition, and explicit content moderation.\n\nContact Support:\n Name: Google Cloud",
+      "type": "text/plain"
+    }
+  }
+}
