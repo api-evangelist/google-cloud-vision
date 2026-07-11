@@ -42,6 +42,8 @@ apis:
       - type: JSONLDContext
         url: json-ld/json-ld.yml
 common:
+  - type: OAuthScopes
+    url: scopes/google-cloud-vision-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/googleapis
   - type: Portal
@@ -66,6 +68,8 @@ common:
     url: json-ld/json-ld.yml
   - type: Integrations
     url: https://cloud.google.com/marketplace
+  - url: https://docs.cloud.google.com/feeds/vision-release-notes.xml
+    type: Blog
 integrations:
   - name: Become a Partner
 maintainers:
