@@ -1,0 +1,64 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Vision Files API
+  description: Provides image analysis capabilities including label detection, face detection, text extraction (OCR), object detection, landmark recognition, and explicit content moderation.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/vision/docs
+servers:
+- url: https://vision.googleapis.com/v1
+  description: Google Cloud Vision production endpoint
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/cloud-vision
+tags:
+- name: Files
+  description: Analyze files such as PDFs for text and features
+paths:
+  /files:annotate:
+    post:
+      operationId: annotateFiles
+      summary: Google Cloud Vision Annotate files
+      description: Run file detection and annotation for a batch of files such as PDFs.
+      tags:
+      - Files
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchAnnotateFilesRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchAnnotateFilesResponse'
+components:
+  schemas:
+    BatchAnnotateFilesResponse:
+      type: object
+      properties:
+        responses:
+          type: array
+          items:
+            type: object
+    BatchAnnotateFilesRequest:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-vision: Manage your Google Cloud Vision resources
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud Platform resources

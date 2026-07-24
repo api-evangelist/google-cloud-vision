@@ -1,0 +1,64 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Vision Files ProductSearch API
+  description: Provides image analysis capabilities including label detection, face detection, text extraction (OCR), object detection, landmark recognition, and explicit content moderation.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/vision/docs
+servers:
+- url: https://vision.googleapis.com/v1
+  description: Google Cloud Vision production endpoint
+security:
+- oauth2:
+  - https://www.googleapis.com/auth/cloud-vision
+tags:
+- name: ProductSearch
+  description: Search for products similar to an image
+paths:
+  /projects/{project}/locations/{location}/productSets:
+    get:
+      operationId: listProductSets
+      summary: Google Cloud Vision List product sets
+      description: Lists product sets in the specified project and location.
+      tags:
+      - ProductSearch
+      parameters:
+      - name: project
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductSetList'
+components:
+  schemas:
+    ProductSetList:
+      type: object
+      properties:
+        productSets:
+          type: array
+          items:
+            type: object
+        nextPageToken:
+          type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-vision: Manage your Google Cloud Vision resources
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud Platform resources
