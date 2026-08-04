@@ -1,0 +1,18 @@
+{
+  "provider": "google-cloud-vision",
+  "sources": [
+    "google-cloud-vision-files-api-openapi.yml",
+    "google-cloud-vision-images-api-openapi.yml",
+    "google-cloud-vision-productsearch-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-cloud-vision-files-api-openapi.yml",
+    "google-cloud-vision-images-api-openapi.yml",
+    "google-cloud-vision-productsearch-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

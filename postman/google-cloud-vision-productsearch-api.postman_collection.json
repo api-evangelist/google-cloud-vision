@@ -1,0 +1,193 @@
+{
+  "info": {
+    "_postman_id": "f5ea8422-b51d-4dda-b2f5-8b2e82d23da4",
+    "name": "Google Cloud Vision Files ProductSearch API",
+    "description": "Provides image analysis capabilities including label detection, face detection, text extraction (OCR), object detection, landmark recognition, and explicit content moderation.\n\nContact Support:\n Name: Google Cloud",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:48:54.000Z",
+    "updatedAt": "2026-07-28T01:48:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f5ea8422-b51d-4dda-b2f5-8b2e82d23da4"
+  },
+  "item": [
+    {
+      "name": "projects",
+      "item": [
+        {
+          "name": "{project}",
+          "item": [
+            {
+              "name": "locations",
+              "item": [
+                {
+                  "name": "{location}",
+                  "item": [
+                    {
+                      "name": "productSets",
+                      "item": [
+                        {
+                          "name": "Google Cloud Vision List product sets",
+                          "id": "fbf1c900-16df-4845-a701-4c4fc475ba24",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/projects/:project/locations/:location/productSets",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "projects",
+                                ":project",
+                                "locations",
+                                ":location",
+                                "productSets"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "da500ba9-7882-41b1-967a-e254f00ac320",
+                                  "key": "project",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "e0619810-14b2-49bd-9e77-4ff775f9c90f",
+                                  "key": "location",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Lists product sets in the specified project and location."
+                          },
+                          "response": [
+                            {
+                              "id": "6a30a262-2525-484b-b19b-a88628a80a84",
+                              "name": "Successful response",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/projects/:project/locations/:location/productSets",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "projects",
+                                    ":project",
+                                    "locations",
+                                    ":location",
+                                    "productSets"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "project"
+                                    },
+                                    {
+                                      "key": "location"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"nextPageToken\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T01:48:55.000Z",
+                              "updatedAt": "2026-07-28T01:48:55.000Z",
+                              "uid": "35240-6a30a262-2525-484b-b19b-a88628a80a84"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:48:55.000Z",
+                          "updatedAt": "2026-07-28T01:48:55.000Z",
+                          "uid": "35240-fbf1c900-16df-4845-a701-4c4fc475ba24"
+                        }
+                      ],
+                      "id": "2e184584-2a1b-463e-a5e2-0fc22e29c98e",
+                      "createdAt": "2026-07-28T01:48:55.000Z",
+                      "updatedAt": "2026-07-28T01:48:55.000Z",
+                      "uid": "35240-2e184584-2a1b-463e-a5e2-0fc22e29c98e"
+                    }
+                  ],
+                  "id": "19228ae2-3c31-4289-a19a-553b9cf266e7",
+                  "createdAt": "2026-07-28T01:48:55.000Z",
+                  "updatedAt": "2026-07-28T01:48:55.000Z",
+                  "uid": "35240-19228ae2-3c31-4289-a19a-553b9cf266e7"
+                }
+              ],
+              "id": "c26b5510-5788-4af2-af7f-7f84f6885a64",
+              "createdAt": "2026-07-28T01:48:55.000Z",
+              "updatedAt": "2026-07-28T01:48:55.000Z",
+              "uid": "35240-c26b5510-5788-4af2-af7f-7f84f6885a64"
+            }
+          ],
+          "id": "16f0d276-3454-4959-b55c-ec8f8c2a8bb0",
+          "createdAt": "2026-07-28T01:48:55.000Z",
+          "updatedAt": "2026-07-28T01:48:55.000Z",
+          "uid": "35240-16f0d276-3454-4959-b55c-ec8f8c2a8bb0"
+        }
+      ],
+      "id": "1b587eb7-b8e7-41d2-a5a9-c6d1d12e5109",
+      "createdAt": "2026-07-28T01:48:55.000Z",
+      "updatedAt": "2026-07-28T01:48:55.000Z",
+      "uid": "35240-1b587eb7-b8e7-41d2-a5a9-c6d1d12e5109"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/cloud-vision https://www.googleapis.com/auth/cloud-platform",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://vision.googleapis.com/v1"
+    }
+  ]
+}

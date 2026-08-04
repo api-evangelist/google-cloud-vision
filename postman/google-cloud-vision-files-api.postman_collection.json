@@ -1,0 +1,155 @@
+{
+  "info": {
+    "_postman_id": "54e91a47-3ea5-430e-8b3a-2a4bb23dec62",
+    "name": "Google Cloud Vision Files API",
+    "description": "Provides image analysis capabilities including label detection, face detection, text extraction (OCR), object detection, landmark recognition, and explicit content moderation.\n\nContact Support:\n Name: Google Cloud",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:48:49.000Z",
+    "updatedAt": "2026-07-28T01:48:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-54e91a47-3ea5-430e-8b3a-2a4bb23dec62"
+  },
+  "item": [
+    {
+      "name": "files:annotate",
+      "item": [
+        {
+          "name": "Google Cloud Vision Annotate files",
+          "id": "0f7d1cbb-eb78-4797-a8e6-7f37e21bece4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/files:annotate",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "files:annotate"
+              ]
+            },
+            "description": "Run file detection and annotation for a batch of files such as PDFs."
+          },
+          "response": [
+            {
+              "id": "482c99a6-1463-4399-b16c-4d2e355c86a6",
+              "name": "Successful response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/files:annotate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "files:annotate"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T01:48:49.000Z",
+              "updatedAt": "2026-07-28T01:48:49.000Z",
+              "uid": "35240-482c99a6-1463-4399-b16c-4d2e355c86a6"
+            }
+          ],
+          "createdAt": "2026-07-28T01:48:49.000Z",
+          "updatedAt": "2026-07-28T01:48:49.000Z",
+          "uid": "35240-0f7d1cbb-eb78-4797-a8e6-7f37e21bece4"
+        }
+      ],
+      "id": "bb9e5812-f59f-4e9a-8f5c-3b1f8d33a860",
+      "createdAt": "2026-07-28T01:48:49.000Z",
+      "updatedAt": "2026-07-28T01:48:49.000Z",
+      "uid": "35240-bb9e5812-f59f-4e9a-8f5c-3b1f8d33a860"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/cloud-vision https://www.googleapis.com/auth/cloud-platform",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://vision.googleapis.com/v1"
+    }
+  ]
+}
