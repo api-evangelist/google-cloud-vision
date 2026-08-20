@@ -23,6 +23,12 @@ modified: '2026-05-19'
 specificationVersion: '0.23'
 type: Index
 tags:
+  - Computer-Vision
+  - Google Cloud
+  - Image Analysis
+  - Machine-Learning
+  - OCR
+tags_raw:
   - Computer Vision
   - Google Cloud
   - Image Analysis
@@ -35,6 +41,8 @@ apis:
   humanURL: https://cloud.google.com/vision/docs
   baseURL: https://vision.googleapis.com/v1
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -55,6 +63,8 @@ apis:
   humanURL: https://cloud.google.com/vision/docs
   baseURL: https://vision.googleapis.com/v1
   tags:
+  - Image
+  tags_raw:
   - Images
   properties:
   - type: OpenAPI
@@ -75,6 +85,8 @@ apis:
   humanURL: https://cloud.google.com/vision/docs
   baseURL: https://vision.googleapis.com/v1
   tags:
+  - Product Search
+  tags_raw:
   - ProductSearch
   properties:
   - type: OpenAPI
