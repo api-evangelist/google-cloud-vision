@@ -97,7 +97,7 @@ apis:
   humanURL: https://cloud.google.com/vision/docs
   baseURL: https://vision.googleapis.com/v1
   tags:
-  - Product Search
+  - ProductSearch
   tags_raw:
   - ProductSearch
   properties:
