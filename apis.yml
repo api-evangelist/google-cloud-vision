@@ -91,18 +91,16 @@ apis:
     url: json-schema/json-schema.yml
   - type: JSONLDContext
     url: json-ld/json-ld.yml
-- aid: google-cloud-vision:google-cloud-vision-productsearch-api
-  name: Google Cloud Vision ProductSearch API
+- aid: google-cloud-vision:google-cloud-vision-product-search-api
+  name: Google Cloud Vision Product Search API
   description: Search for products similar to an image
   humanURL: https://cloud.google.com/vision/docs
   baseURL: https://vision.googleapis.com/v1
   tags:
   - Product Search
-  tags_raw:
-  - ProductSearch
   properties:
   - type: OpenAPI
-    url: openapi/google-cloud-vision-productsearch-api-openapi.yml
+    url: openapi/google-cloud-vision-product-search-api-openapi.yml
   - type: Documentation
     url: https://cloud.google.com/vision/docs/reference/rest
   - type: Authentication
