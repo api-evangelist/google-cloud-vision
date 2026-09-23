@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Vision Files Images API
+  title: Google Cloud Vision Images API
   description: Provides image analysis capabilities including label detection, face detection, text extraction (OCR), object detection, landmark recognition, and explicit content moderation.
   version: v1
   contact:
@@ -58,27 +58,21 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
-    EntityAnnotation:
+    AsyncBatchAnnotateImagesRequest:
       type: object
       properties:
-        mid:
-          type: string
-          description: Knowledge Graph machine ID
-        description:
-          type: string
-          description: Entity textual description
-        score:
-          type: number
-          description: Overall score of the result
-        confidence:
-          type: number
-          description: Confidence score
-        topicality:
-          type: number
-          description: Topicality score
-        locale:
-          type: string
-          description: Language code for the locale
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnnotateImageRequest'
+        outputConfig:
+          type: object
+          properties:
+            gcsDestination:
+              type: object
+              properties:
+                uri:
+                  type: string
     BatchAnnotateImagesResponse:
       type: object
       properties:
@@ -86,43 +80,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AnnotateImageResponse'
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
-        response:
-          type: object
-    AnnotateImageResponse:
-      type: object
-      properties:
-        labelAnnotations:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityAnnotation'
-        textAnnotations:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityAnnotation'
-        faceAnnotations:
-          type: array
-          items:
-            type: object
-        landmarkAnnotations:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityAnnotation'
-        safeSearchAnnotation:
-          type: object
-          properties:
-            adult:
-              type: string
-            violence:
-              type: string
-            racy:
-              type: string
     AnnotateImageRequest:
       type: object
       properties:
@@ -164,6 +121,15 @@ components:
               maxResults:
                 type: integer
           description: Features to detect in the image
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+        response:
+          type: object
     BatchAnnotateImagesRequest:
       type: object
       properties:
@@ -172,21 +138,55 @@ components:
           items:
             $ref: '#/components/schemas/AnnotateImageRequest'
           description: Individual image annotation requests
-    AsyncBatchAnnotateImagesRequest:
+    EntityAnnotation:
       type: object
       properties:
-        requests:
+        mid:
+          type: string
+          description: Knowledge Graph machine ID
+        description:
+          type: string
+          description: Entity textual description
+        score:
+          type: number
+          description: Overall score of the result
+        confidence:
+          type: number
+          description: Confidence score
+        topicality:
+          type: number
+          description: Topicality score
+        locale:
+          type: string
+          description: Language code for the locale
+    AnnotateImageResponse:
+      type: object
+      properties:
+        labelAnnotations:
           type: array
           items:
-            $ref: '#/components/schemas/AnnotateImageRequest'
-        outputConfig:
+            $ref: '#/components/schemas/EntityAnnotation'
+        textAnnotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityAnnotation'
+        faceAnnotations:
+          type: array
+          items:
+            type: object
+        landmarkAnnotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityAnnotation'
+        safeSearchAnnotation:
           type: object
           properties:
-            gcsDestination:
-              type: object
-              properties:
-                uri:
-                  type: string
+            adult:
+              type: string
+            violence:
+              type: string
+            racy:
+              type: string
   securitySchemes:
     oauth2:
       type: oauth2
