@@ -35,10 +35,10 @@ modified: '2026-05-19'
 specificationVersion: '0.23'
 type: Index
 tags:
-  - Computer-Vision
+  - Computer Vision
   - Google Cloud
   - Image Analysis
-  - Machine-Learning
+  - Machine Learning
   - OCR
 tags_raw:
   - Computer Vision
@@ -46,6 +46,8 @@ tags_raw:
   - Image Analysis
   - Machine Learning
   - OCR
+  - Computer-Vision
+  - Machine-Learning
 apis:
 - aid: google-cloud-vision:google-cloud-vision-files-api
   name: Google Cloud Vision Files API

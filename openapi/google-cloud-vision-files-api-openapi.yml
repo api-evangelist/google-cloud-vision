@@ -38,17 +38,17 @@ paths:
                 $ref: '#/components/schemas/BatchAnnotateFilesResponse'
 components:
   schemas:
-    BatchAnnotateFilesResponse:
-      type: object
-      properties:
-        responses:
-          type: array
-          items:
-            type: object
     BatchAnnotateFilesRequest:
       type: object
       properties:
         requests:
+          type: array
+          items:
+            type: object
+    BatchAnnotateFilesResponse:
+      type: object
+      properties:
+        responses:
           type: array
           items:
             type: object
