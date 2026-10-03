@@ -58,13 +58,6 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
-    BatchAnnotateImagesResponse:
-      type: object
-      properties:
-        responses:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnnotateImageResponse'
     EntityAnnotation:
       type: object
       properties:
@@ -86,6 +79,43 @@ components:
         locale:
           type: string
           description: Language code for the locale
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+        response:
+          type: object
+    AnnotateImageResponse:
+      type: object
+      properties:
+        labelAnnotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityAnnotation'
+        textAnnotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityAnnotation'
+        faceAnnotations:
+          type: array
+          items:
+            type: object
+        landmarkAnnotations:
+          type: array
+          items:
+            $ref: '#/components/schemas/EntityAnnotation'
+        safeSearchAnnotation:
+          type: object
+          properties:
+            adult:
+              type: string
+            violence:
+              type: string
+            racy:
+              type: string
     AsyncBatchAnnotateImagesRequest:
       type: object
       properties:
@@ -101,15 +131,6 @@ components:
               properties:
                 uri:
                   type: string
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
-        response:
-          type: object
     BatchAnnotateImagesRequest:
       type: object
       properties:
@@ -159,34 +180,13 @@ components:
               maxResults:
                 type: integer
           description: Features to detect in the image
-    AnnotateImageResponse:
+    BatchAnnotateImagesResponse:
       type: object
       properties:
-        labelAnnotations:
+        responses:
           type: array
           items:
-            $ref: '#/components/schemas/EntityAnnotation'
-        textAnnotations:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityAnnotation'
-        faceAnnotations:
-          type: array
-          items:
-            type: object
-        landmarkAnnotations:
-          type: array
-          items:
-            $ref: '#/components/schemas/EntityAnnotation'
-        safeSearchAnnotation:
-          type: object
-          properties:
-            adult:
-              type: string
-            violence:
-              type: string
-            racy:
-              type: string
+            $ref: '#/components/schemas/AnnotateImageResponse'
   securitySchemes:
     oauth2:
       type: oauth2
