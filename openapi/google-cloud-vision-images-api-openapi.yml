@@ -58,36 +58,6 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
-    EntityAnnotation:
-      type: object
-      properties:
-        mid:
-          type: string
-          description: Knowledge Graph machine ID
-        description:
-          type: string
-          description: Entity textual description
-        score:
-          type: number
-          description: Overall score of the result
-        confidence:
-          type: number
-          description: Confidence score
-        topicality:
-          type: number
-          description: Topicality score
-        locale:
-          type: string
-          description: Language code for the locale
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        done:
-          type: boolean
-        response:
-          type: object
     AnnotateImageResponse:
       type: object
       properties:
@@ -116,21 +86,6 @@ components:
               type: string
             racy:
               type: string
-    AsyncBatchAnnotateImagesRequest:
-      type: object
-      properties:
-        requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnnotateImageRequest'
-        outputConfig:
-          type: object
-          properties:
-            gcsDestination:
-              type: object
-              properties:
-                uri:
-                  type: string
     BatchAnnotateImagesRequest:
       type: object
       properties:
@@ -139,6 +94,13 @@ components:
           items:
             $ref: '#/components/schemas/AnnotateImageRequest'
           description: Individual image annotation requests
+    BatchAnnotateImagesResponse:
+      type: object
+      properties:
+        responses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnnotateImageResponse'
     AnnotateImageRequest:
       type: object
       properties:
@@ -180,13 +142,51 @@ components:
               maxResults:
                 type: integer
           description: Features to detect in the image
-    BatchAnnotateImagesResponse:
+    AsyncBatchAnnotateImagesRequest:
       type: object
       properties:
-        responses:
+        requests:
           type: array
           items:
-            $ref: '#/components/schemas/AnnotateImageResponse'
+            $ref: '#/components/schemas/AnnotateImageRequest'
+        outputConfig:
+          type: object
+          properties:
+            gcsDestination:
+              type: object
+              properties:
+                uri:
+                  type: string
+    EntityAnnotation:
+      type: object
+      properties:
+        mid:
+          type: string
+          description: Knowledge Graph machine ID
+        description:
+          type: string
+          description: Entity textual description
+        score:
+          type: number
+          description: Overall score of the result
+        confidence:
+          type: number
+          description: Confidence score
+        topicality:
+          type: number
+          description: Topicality score
+        locale:
+          type: string
+          description: Language code for the locale
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        done:
+          type: boolean
+        response:
+          type: object
   securitySchemes:
     oauth2:
       type: oauth2
