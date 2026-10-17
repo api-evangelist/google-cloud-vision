@@ -86,21 +86,15 @@ components:
               type: string
             racy:
               type: string
-    BatchAnnotateImagesRequest:
+    Operation:
       type: object
       properties:
-        requests:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnnotateImageRequest'
-          description: Individual image annotation requests
-    BatchAnnotateImagesResponse:
-      type: object
-      properties:
-        responses:
-          type: array
-          items:
-            $ref: '#/components/schemas/AnnotateImageResponse'
+        name:
+          type: string
+        done:
+          type: boolean
+        response:
+          type: object
     AnnotateImageRequest:
       type: object
       properties:
@@ -142,6 +136,14 @@ components:
               maxResults:
                 type: integer
           description: Features to detect in the image
+    BatchAnnotateImagesRequest:
+      type: object
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnnotateImageRequest'
+          description: Individual image annotation requests
     AsyncBatchAnnotateImagesRequest:
       type: object
       properties:
@@ -178,15 +180,13 @@ components:
         locale:
           type: string
           description: Language code for the locale
-    Operation:
+    BatchAnnotateImagesResponse:
       type: object
       properties:
-        name:
-          type: string
-        done:
-          type: boolean
-        response:
-          type: object
+        responses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnnotateImageResponse'
   securitySchemes:
     oauth2:
       type: oauth2
